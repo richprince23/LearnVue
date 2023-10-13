@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>VUE</title>
+</head>
+<body>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+    <div id="app">
+        <div>
+            <input type="text" v-model = "greeting">
+        </div>
+        <p>{{greeting }}</p>
+        <button :class="active ? 'red' : 'blue'" @click="changeClass">Click me</button>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    greeting: "Hello!",
+                    name: "John Doe",
+                    css: "red",
+                    active: false,
+                }
+            },
+            mounted() {
+                setTimeout(()=>{
+                    this.greeting = "Hello World";
+                }, 3000)
+            },
+            methods: {
+                changeName() {
+                    this.name = "Kweku";
+                },
+                changeClass(){
+                   this.active = !this.active
+                }
+            },
+        }).mount("#app");
+    </script>
+</body>
+</html>
